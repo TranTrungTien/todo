@@ -42,36 +42,39 @@ class TodoItem extends StatelessWidget {
           child: Text(
             todo.taskName,
             style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.w500, fontSize: 20),
+                color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20),
           ),
         ),
         subtitle: index == selectedItem
             ? const Text("Done !")
-            : RichText(
-                text: TextSpan(children: [
-                TextSpan(
-                    text: todo.detail,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    )),
-                const TextSpan(text: " - ", style: TextStyle()),
-                const TextSpan(
-                    text: "Due Date : ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    )),
-                TextSpan(
-                    text: todo.dueDate.year.toString(),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ))
-              ])),
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(todo.detail,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      )),
+                  RichText(
+                      text: TextSpan(children: [
+                    const TextSpan(
+                        text: "Due Date : ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        )),
+                    TextSpan(
+                        text: todo.dueDate.year.toString(),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ))
+                  ])),
+                ],
+              ),
         trailing: IconButton(
           onPressed: (index == selectedItem
               ? null

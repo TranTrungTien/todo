@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn/components/todo_form.dart';
 
 class TodoHeader extends StatelessWidget {
   const TodoHeader({Key? key}) : super(key: key);
@@ -46,7 +47,13 @@ class TodoHeader extends StatelessWidget {
               // Background color
               primary: Colors.white,
             ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const TodoForm();
+                  });
+            },
             child: Text(
               "ADD NEW",
               style: TextStyle(

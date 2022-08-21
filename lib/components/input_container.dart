@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:learn/components/input.dart';
 
 class InputContainer extends StatelessWidget {
-  const InputContainer({Key? key}) : super(key: key);
-
+  const InputContainer({Key? key, required this.label, required this.hintLabel})
+      : super(key: key);
+  final String label;
+  final String hintLabel;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -11,19 +13,14 @@ class InputContainer extends StatelessWidget {
       width: double.infinity,
       child: Row(
         children: [
-          Expanded(child: Input()),
-          Container(
-            decoration: const BoxDecoration(
-                color: Colors.greenAccent,
-                borderRadius: BorderRadius.all(Radius.circular(5))),
-            width: 50,
-            height: double.infinity,
-            margin: const EdgeInsets.only(left: 10),
-            child: ElevatedButton(
-              child: const Icon(Icons.add),
-              onPressed: () {},
-            ),
-          )
+          Text(label),
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(
+              child: Input(
+            hintLabel: hintLabel,
+          )),
         ],
       ),
     );
